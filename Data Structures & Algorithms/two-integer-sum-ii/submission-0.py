@@ -1,0 +1,20 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        #### Using the 2 ptrs
+        ans = []
+        left, right = 0, len(numbers)-1
+        while right != left:
+            total = numbers[right] + numbers[left]
+            if total > target:
+                right -= 1
+            elif total < target:
+                left += 1
+            else:
+                return [left+1, right+1]
+                break
+
+        
+
+        
+
+        

@@ -1,0 +1,21 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        if len(s1) > len(s2):
+            return False
+        
+        ### Initialize the maps for s1 and s2:
+        s1_map = [0] * 26
+        s2_map = [0] * 26
+
+        ### Get the freq count or hash_map of s1, along side with s2
+        for i in range(len(s1)):
+            s1_map[ord(s1[i]) - ord('a')] += 1
+            s2_map[ord(s2[i]) - ord('a')] += 1
+
+        for j in range(len(s1), len(s2)):
+            if s1_map == s2_map:
+                return True
+            s2_map[ord(s2[j]) - ord('a')] += 1
+            s2_map[ord(s2[j - len(s1)]) - ord('a')] -= 1
+
+        return s1_map == s2_map 
